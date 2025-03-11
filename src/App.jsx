@@ -1,13 +1,22 @@
-import { useState } from 'react';
-import './App.css';
+import { useEffect, useState } from 'react';
 import ContactForm from './components/contactForm/ContactForm';
 import SearchBox from './components/searchBox/SearchBox';
 import ContactList from './components/contactList/ContactList';
 import Options from './components/options/Options';
+import { fetchContacts, selectError, selectLoading } from './redux/contactsOps';
+import { useDispatch, useSelector } from 'react-redux';
+import './App.css';
 
 function App() {
   const [openForm, setOpenForm] = useState(false);
   const [openSearchBox, setOpenSearchBox] = useState(false);
+  const dispatch = useDispatch();
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const onOpenForm = () => {
     setOpenForm(!openForm);
@@ -24,6 +33,8 @@ function App() {
       <Options onForm={onOpenForm} onSearchBoxbox={onOpenSearchBox} />
       {openForm && <ContactForm />}
       {openSearchBox && <SearchBox />}
+      {loading && !error && <b>Loading...</b>}
+      {error && <b>Something went wrong, plz reload page</b>}
       <ContactList />
     </>
   );
