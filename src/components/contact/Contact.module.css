@@ -1,0 +1,20 @@
+.contactInfoWrappper {
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.contactInfo {
+  width: 140px;
+  text-align: left;
+  font-weight: 500;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.contactBtn {
+  padding: 6px;
+}

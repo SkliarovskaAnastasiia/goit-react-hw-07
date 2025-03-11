@@ -1,0 +1,14 @@
+.optionsList {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  width: 150px;
+  margin: 0 auto 16px;
+}
+
+.optionsBtn {
+  padding: 10px;
+  border: 1px solid #213547c5;
+  line-height: 0;
+}
